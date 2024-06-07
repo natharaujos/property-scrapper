@@ -1,7 +1,8 @@
-import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import realtyFormSchema from "./validation/RealtyFormValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import useStyles from "./style";
 
 interface IRealtyForm {
   nome: string;
@@ -14,6 +15,7 @@ const realtyFormInitialValues: IRealtyForm = {
 };
 
 function RealtyForm() {
+  const classes = useStyles();
   const { control, handleSubmit } = useForm<IRealtyForm>({
     resolver: yupResolver(realtyFormSchema),
     defaultValues: realtyFormInitialValues,
@@ -24,16 +26,18 @@ function RealtyForm() {
   };
 
   return (
-    <Paper>
-      <Grid
-        container
-        width={"400px"}
-        height={"500px"}
-        padding={"10px"}
-        alignItems={"center"}
+    <Grid container xs={12} alignItems={"center"} justifyContent={"center"}>
+      <Box
+        className={classes.paper}
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"center"}
+        gap={2}
       >
         <Grid item xs={12}>
-          <Typography fontWeight={"bold"}>Cadastro de Imobiliárias</Typography>
+          <Typography fontWeight={"bold"} textAlign={"center"}>
+            Cadastro de Imobiliárias
+          </Typography>
         </Grid>
         <Controller
           name="nome"
@@ -48,6 +52,7 @@ function RealtyForm() {
                 error={!!error}
                 helperText={error?.message}
                 onChange={onChange}
+                fullWidth
               />
             </Grid>
           )}
@@ -65,6 +70,7 @@ function RealtyForm() {
                 error={!!error}
                 helperText={error?.message}
                 onChange={onChange}
+                fullWidth
               />
             </Grid>
           )}
@@ -74,12 +80,13 @@ function RealtyForm() {
             id="button-form-realty"
             variant="contained"
             onClick={handleSubmit(onSubmit)}
+            fullWidth
           >
             Enviar
           </Button>
         </Grid>
-      </Grid>
-    </Paper>
+      </Box>
+    </Grid>
   );
 }
 

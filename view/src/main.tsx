@@ -3,6 +3,7 @@ import App from "./App.tsx";
 import ErrorPage from "./ErrorPage.tsx";
 import RealtyForm from "./components/RealtyForm/RealtyForm.tsx";
 import { createRoot } from "react-dom/client";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

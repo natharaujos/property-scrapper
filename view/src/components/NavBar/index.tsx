@@ -1,26 +1,27 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { ListItemIcon } from "@mui/material";
-import { Inbox } from "@mui/icons-material";
+import { Inbox, Home } from "@mui/icons-material";
+import { BLACK } from "../../shared/constants/Colors";
 
 function NavBar() {
   return (
-    <Drawer variant="permanent">
-      <Box role="presentation">
-        <List>
-          <ListItemButton>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Realties" />
-          </ListItemButton>
-        </List>
-      </Box>
-    </Drawer>
+    <List>
+      <ListItemButton>
+        <ListItemIcon color={BLACK}>
+          <Home />
+        </ListItemIcon>
+        <ListItemText primary="Home" color={BLACK} />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon color={BLACK}>
+          <Inbox />
+        </ListItemIcon>
+        <ListItemText primary="Realties" color={BLACK} />
+      </ListItemButton>
+    </List>
   );
 }
 
