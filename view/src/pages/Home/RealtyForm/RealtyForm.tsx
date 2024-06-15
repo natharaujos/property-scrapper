@@ -46,13 +46,13 @@ function RealtyForm() {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Grid container xs={12} height={"75%"}>
+      <Grid container xs={12} gap={"1rem"}>
         <Grid item xs={12}>
           <Typography fontWeight={"bold"} textAlign={"center"}>
             Cadastro de Imobiliárias
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} height={"5rem"}>
           <Controller
             name="name"
             control={control}
@@ -71,7 +71,7 @@ function RealtyForm() {
             )}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} height={"5rem"}>
           <Controller
             name="link"
             control={control}
