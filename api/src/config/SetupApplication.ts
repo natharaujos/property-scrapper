@@ -2,6 +2,7 @@ import { Application, Request, Response } from "express";
 import bodyParser from "body-parser";
 import { AppDIContainer } from "./configure-di";
 import { RealtyController } from "src/presentation/controllers/RealtyController";
+import cors from "cors";
 
 export class SetupApplication {
   constructor(
@@ -19,6 +20,7 @@ export class SetupApplication {
     const realtyController =
       this.diContainer.resolve<RealtyController>("realtyController");
 
+    this.app.use(cors());
     this.app.get("/", (req, res) => {
       res.send("Api Property Scrapper");
     });

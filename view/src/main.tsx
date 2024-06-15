@@ -1,9 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import ErrorPage from "./ErrorPage.tsx";
-import RealtyForm from "./components/RealtyForm/RealtyForm.tsx";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import Home from "./pages/Home/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "realty",
-        element: <RealtyForm />,
+        path: "home",
+        element: <Home />,
       },
     ],
   },

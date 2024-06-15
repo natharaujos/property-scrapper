@@ -9,11 +9,5 @@
 html,
 body {
   line-height: 1.6;
-  background-color: #43463e;
   font-size: 16px;
-  height: 100%;
-}
-
-#root {
-  min-height: 100%;
 }

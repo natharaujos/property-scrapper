@@ -10,11 +10,12 @@ export class RealtyDbAdapter implements IRealtyDbAdapter {
     this.realties = [];
   }
 
-  async save(realty: Realty) {
+  async createRealty(realty: Realty) {
     const realtiesRef = collection(db, "property-collection");
     try {
       await setDoc(doc(realtiesRef, `${realty.name}`), {
         name: realty.name,
+        link: realty.link,
       });
     } catch {
       throw new Error("Erro ao adicionar imobiliária");

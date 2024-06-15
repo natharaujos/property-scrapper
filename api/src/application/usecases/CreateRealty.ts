@@ -9,8 +9,8 @@ export class CreateRealty implements ICreateRealty {
     this.realtyDbAdapter = realtyDbAdapter;
   }
 
-  execute(name: string): void {
-    const realty = new Realty("", name);
-    this.realtyDbAdapter.save(realty);
+  execute(name: string, link: string): void {
+    const realty = new Realty("", name, link);
+    this.realtyDbAdapter.createRealty(realty);
   }
 }
