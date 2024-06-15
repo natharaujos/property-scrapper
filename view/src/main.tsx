@@ -4,6 +4,8 @@ import ErrorPage from "./ErrorPage.tsx";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import Home from "./pages/Home/index.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store.ts";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  createRoot(rootElement).render(<RouterProvider router={router} />);
+  createRoot(rootElement).render(
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 } else {
   console.error("No root element found");
 }

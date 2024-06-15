@@ -1,8 +1,8 @@
-import axios from "axios";
+import { instance } from "../../../AxiosInstance";
 
 class RealtyService {
   static async createRealty(name: string, link: string): Promise<void> {
-    axios
+    instance
       .post("http://localhost:3333/realties", { name, link })
       .catch((error) => {
         throw error;

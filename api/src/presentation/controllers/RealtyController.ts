@@ -13,7 +13,9 @@ export class RealtyController {
 
     try {
       this.createRealty.execute(name, link);
-      res.status(201).send("Post created successfully.");
+      setTimeout(() => {
+        res.status(201).send("Post created successfully.");
+      }, 2000);
     } catch (error) {
       res.status(500).send(error);
     }
