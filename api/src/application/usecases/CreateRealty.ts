@@ -1,5 +1,5 @@
 import { Realty } from "../../domain/models/Realty";
-import { IRealtyDbAdapter } from "../../infrastructure/dbAdapters/interfaces/IRealtyDbAdapter";
+import { IRealtyDbAdapter } from "../../domain/adapters/IRealtyDbAdapter";
 import { ICreateRealty } from "../interfaces/ICreateRealty";
 
 export class CreateRealty implements ICreateRealty {
