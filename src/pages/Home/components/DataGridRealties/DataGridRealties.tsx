@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import useCustomTheme from "../../../hooks/useCustomTheme";
-import { RealtyDto } from "../interfaces/RealtyDto";
+import useCustomTheme from "../../../../hooks/useCustomTheme";
+import { RealtyDto } from "../../interfaces/RealtyDto";
 import { useEffect, useState } from "react";
-import RealtyService from "../services/RealtyService";
+import RealtyService from "../../services/RealtyService";
 import { Grid, Typography } from "@mui/material";
 import RealtyForm from "../RealtyForm/RealtyForm";
-import CustomSkeleton from "../../../shared/components/CustomSkeleton";
+import CustomSkeleton from "../../../../shared/components/CustomSkeleton";
 
 function DataGridRealties() {
   const { greyColor } = useCustomTheme();

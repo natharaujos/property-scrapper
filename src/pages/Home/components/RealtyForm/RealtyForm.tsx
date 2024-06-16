@@ -9,7 +9,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import realtyFormSchema from "./validation/RealtyFormValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import RealtyService from "../services/RealtyService";
+import RealtyService from "../../services/RealtyService";
 import { useState } from "react";
 
 interface IRealtyForm {

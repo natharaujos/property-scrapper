@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import DataGridRealties from "./DataGridRealties/DataGridRealties";
+import DataGridRealties from "./components/DataGridRealties/DataGridRealties";
 
 function Home() {
   return (
