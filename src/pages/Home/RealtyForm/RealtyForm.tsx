@@ -1,8 +1,16 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import realtyFormSchema from "./validation/RealtyFormValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import RealtyService from "../services/RealtyService";
+import { useState } from "react";
 
 interface IRealtyForm {
   name: string;
@@ -24,13 +32,18 @@ function RealtyForm({ getRealtiesData }: IRealtyFormPros) {
     defaultValues: realtyFormInitialValues,
   });
 
+  const [loadingOnButton, setLoadingOnButton] = useState<boolean>(false);
+
   const onSubmit = async () => {
     try {
+      setLoadingOnButton(true);
       await RealtyService.createRealty(watch("name"), watch("link"));
       await getRealtiesData();
       reset();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoadingOnButton(false);
     }
   };
 
@@ -43,15 +56,22 @@ function RealtyForm({ getRealtiesData }: IRealtyFormPros) {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Grid item container xs={12} gap={"0.5rem"} width={"100%"}>
-        <Grid item xs={12}>
+      <Grid
+        item
+        container
+        xs={12}
+        gap={"0.5rem"}
+        width={"100%"}
+        height={"100%"}
+      >
+        <Grid item xs={12} height={"20%"}>
           <Typography fontWeight={"bold"} textAlign={"center"}>
             Cadastro de Imobiliárias
           </Typography>
         </Grid>
         <Box
           width={"100%"}
-          height={"5rem"}
+          height={"80%"}
           display={"flex"}
           justifyContent={"space-between"}
         >
@@ -109,9 +129,10 @@ function RealtyForm({ getRealtiesData }: IRealtyFormPros) {
               id="button-form-realty"
               variant="contained"
               onClick={handleSubmit(onSubmit)}
+              disabled={loadingOnButton}
               fullWidth
             >
-              Enviar
+              {loadingOnButton ? <CircularProgress /> : "Enviar"}
             </Button>
           </Grid>
         </Box>

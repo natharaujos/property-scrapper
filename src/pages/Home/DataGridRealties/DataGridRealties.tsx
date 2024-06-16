@@ -89,8 +89,8 @@ function DataGridRealties() {
             <DataGrid
               rows={rows}
               columns={columns}
-              pageSize={5}
-              rowsPerPageOptions={[5]}
+              pageSize={6}
+              rowsPerPageOptions={[6]}
               disableSelectionOnClick
             />
           )}
