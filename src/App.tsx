@@ -11,17 +11,17 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container lg={12} id="app" display={"flex"} height={"100vh"}>
-        <Grid item>
+      <Grid container xs={12} id="app" display={"flex"} height={"100vh"}>
+        <Grid item xs={1}>
           <NavBar />
         </Grid>
         <Grid
+          item
           id="conteudo-principal"
-          marginLeft={"300px"}
-          width={"100vw"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
+          xs={10}
         >
           <Outlet />
         </Grid>

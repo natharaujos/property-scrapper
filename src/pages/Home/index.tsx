@@ -8,7 +8,7 @@ function Home() {
       height={"100vh"}
       display={"flex"}
       alignItems={"center"}
-      justifyContent={"space-around"}
+      justifyContent={"flex-start"}
     >
       <Grid
         item

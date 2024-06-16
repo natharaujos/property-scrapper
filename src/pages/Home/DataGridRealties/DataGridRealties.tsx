@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 import RealtyService from "../services/RealtyService";
 import { Grid, Typography } from "@mui/material";
 import RealtyForm from "../RealtyForm/RealtyForm";
+import CustomSkeleton from "../../../shared/components/CustomSkeleton";
 
 function DataGridRealties() {
-  const { greenColor } = useCustomTheme();
+  const { greyColor } = useCustomTheme();
   const [realties, setRealties] = useState<RealtyDto[]>([]);
+  const [showDataGridSkeleton, setShowDataGridSkeleton] =
+    useState<boolean>(false);
 
   const larguraReferencia = window.innerWidth;
 
@@ -39,10 +42,13 @@ function DataGridRealties() {
 
   async function getRealtiesData() {
     try {
+      setShowDataGridSkeleton(true);
       const result = await RealtyService.getRealties();
       setRealties(result);
     } catch (error) {
       console.log(error);
+    } finally {
+      setShowDataGridSkeleton(false);
     }
   }
 
@@ -52,7 +58,7 @@ function DataGridRealties() {
 
   return (
     <Box
-      sx={{ backgroundColor: greenColor.main }}
+      sx={{ backgroundColor: greyColor.main }}
       borderRadius={"1rem"}
       padding={"3rem"}
       height={"80vh"}
@@ -62,23 +68,32 @@ function DataGridRealties() {
       alignItems={"center"}
     >
       <Grid container style={{ height: "100%" }}>
-        <Grid item xs={12}>
+        <Grid item xs={12} height={"20%"}>
           <RealtyForm getRealtiesData={getRealtiesData} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} height={"10%"}>
           <Typography fontWeight={"bold"} textAlign={"center"}>
             Listagem de Imobiliárias
           </Typography>
         </Grid>
-        <Grid item xs={12} style={{ height: "60%" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            disableSelectionOnClick
-            style={{ height: "100%", width: "100%" }}
-          />
+        <Grid
+          item
+          xs={12}
+          height={"70%"}
+          display={"flex"}
+          alignItems={"stretch"}
+        >
+          {showDataGridSkeleton ? (
+            <CustomSkeleton />
+          ) : (
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+              disableSelectionOnClick
+            />
+          )}
         </Grid>
       </Grid>
     </Box>
