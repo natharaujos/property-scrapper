@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import RealtyForm from "./RealtyForm/RealtyForm";
 import DataGridRealties from "./DataGridRealties/DataGridRealties";
 
 function Home() {
@@ -11,15 +10,6 @@ function Home() {
       alignItems={"center"}
       justifyContent={"space-around"}
     >
-      <Grid
-        item
-        xs={4}
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        <RealtyForm />
-      </Grid>
       <Grid
         item
         xs={8}

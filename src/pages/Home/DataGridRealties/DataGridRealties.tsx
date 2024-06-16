@@ -5,6 +5,7 @@ import { RealtyDto } from "../interfaces/RealtyDto";
 import { useEffect, useState } from "react";
 import RealtyService from "../services/RealtyService";
 import { Grid, Typography } from "@mui/material";
+import RealtyForm from "../RealtyForm/RealtyForm";
 
 function DataGridRealties() {
   const { greenColor } = useCustomTheme();
@@ -17,14 +18,12 @@ function DataGridRealties() {
     {
       field: "name",
       headerName: "Name",
-      width: larguraReferencia * 0.1,
-      editable: true,
+      width: larguraReferencia * 0.14,
     },
     {
       field: "link",
       headerName: "Link",
       width: larguraReferencia * 0.15,
-      editable: true,
     },
   ];
 
@@ -38,49 +37,47 @@ function DataGridRealties() {
     return realtie;
   });
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const result = await RealtyService.getRealties();
-        setRealties(result);
-      } catch (error) {
-        console.log(error);
-      }
+  async function getRealtiesData() {
+    try {
+      const result = await RealtyService.getRealties();
+      setRealties(result);
+    } catch (error) {
+      console.log(error);
     }
-    fetchData();
+  }
+
+  useEffect(() => {
+    getRealtiesData();
   }, []);
 
   return (
     <Box
       sx={{ backgroundColor: greenColor.main }}
-      padding={"5rem"}
       borderRadius={"1rem"}
-      height={"50vh"}
+      padding={"3rem"}
+      height={"80vh"}
       width={"80%"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Grid
-        container
-        xs={12}
-        height={"80%"}
-        display={"flex"}
-        alignItems={"center"}
-      >
-        <Grid xs={12}>
-          <Typography fontWeight={"bold"} textAlign={"center"} mb={"1rem"}>
+      <Grid container style={{ height: "100%" }}>
+        <Grid item xs={12}>
+          <RealtyForm getRealtiesData={getRealtiesData} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography fontWeight={"bold"} textAlign={"center"}>
             Listagem de Imobiliárias
           </Typography>
         </Grid>
-        <Grid item xs={12} height={"100%"}>
+        <Grid item xs={12} style={{ height: "60%" }}>
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
             disableSelectionOnClick
-            experimentalFeatures={{ newEditingApi: true }}
+            style={{ height: "100%", width: "100%" }}
           />
         </Grid>
       </Grid>
