@@ -1,4 +1,4 @@
-import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { ListItemButton, ListItemIcon, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import useCustomTheme from "../../../../hooks/useCustomTheme";
 
@@ -28,11 +28,7 @@ function CustomNavLink({ icon, text, path }: ICustomNavLink) {
     >
       <ListItemButton>
         <ListItemIcon sx={{ color: greyColor.main }}>{icon}</ListItemIcon>
-        <ListItemText
-          primary={text}
-          color={greyColor.main}
-          sx={{ fontWeight: "700" }}
-        />
+        <Typography fontWeight={"bold"}>{text}</Typography>
       </ListItemButton>
     </NavLink>
   );

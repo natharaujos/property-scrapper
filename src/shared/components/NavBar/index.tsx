@@ -1,6 +1,6 @@
 import * as React from "react";
 import List from "@mui/material/List";
-import { Box } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Inbox, Home } from "@mui/icons-material";
 import useCustomTheme from "../../../hooks/useCustomTheme";
 import CustomNavLink from "./components/CustomNavLink";
@@ -13,17 +13,36 @@ function NavBar() {
       <Box
         sx={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
           backgroundColor: blackColor.light,
           height: "100vh",
           width: "100%",
         }}
+        rowGap={10}
       >
-        <List>
-          <CustomNavLink icon={<Home />} text={"Home"} path={"/home"} />
-          <CustomNavLink icon={<Inbox />} text={"Realtie"} path={"/realties"} />
-        </List>
+        <Grid container xs={12}>
+          <Grid item xs={12}>
+            <Typography
+              textAlign="center"
+              marginTop="1rem"
+              color={"secondary"}
+              fontWeight={"bold"}
+            >
+              Property Scrapper
+            </Typography>
+          </Grid>
+          <Grid item xs={12} marginTop="2rem">
+            <List>
+              <CustomNavLink icon={<Home />} text={"Home"} path={"/home"} />
+              <CustomNavLink
+                icon={<Inbox />}
+                text={"Realtie"}
+                path={"/realties"}
+              />
+            </List>
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );

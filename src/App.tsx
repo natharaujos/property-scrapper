@@ -21,7 +21,7 @@ function App() {
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
-          xs={10}
+          xs={11}
         >
           <Outlet />
         </Grid>
