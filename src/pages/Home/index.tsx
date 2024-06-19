@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import DataGridRealties from "./components/DataGridRealties/DataGridRealties";
+import RealtiesFilter from "./components/RealtiesFilter";
 
 function Home() {
   return (
@@ -17,7 +17,7 @@ function Home() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <DataGridRealties />
+        <RealtiesFilter />
       </Grid>
     </Grid>
   );

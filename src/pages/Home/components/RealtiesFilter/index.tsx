@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import useCustomTheme from "../../../../hooks/useCustomTheme";
 import { RealtyDto } from "../../interfaces/RealtyDto";
 import { useEffect, useState } from "react";
@@ -7,38 +6,13 @@ import RealtyService from "../../services/RealtyService";
 import { Grid, Typography } from "@mui/material";
 import RealtyForm from "../RealtyForm/RealtyForm";
 import CustomSkeleton from "../../../../shared/components/CustomSkeleton";
+import DataGridRealties from "../DataGridRealties";
 
-function DataGridRealties() {
+function RealtiesFilter() {
   const { greyColor } = useCustomTheme();
   const [realties, setRealties] = useState<RealtyDto[]>([]);
   const [showDataGridSkeleton, setShowDataGridSkeleton] =
     useState<boolean>(false);
-
-  const larguraReferencia = window.innerWidth;
-
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "Id", width: larguraReferencia * 0.1 },
-    {
-      field: "name",
-      headerName: "Name",
-      width: larguraReferencia * 0.14,
-    },
-    {
-      field: "link",
-      headerName: "Link",
-      width: larguraReferencia * 0.15,
-    },
-  ];
-
-  const rows = realties.map((r) => {
-    const realtie = {
-      id: r.name + "1",
-      name: r.name,
-      link: r.link,
-    };
-
-    return realtie;
-  });
 
   async function getRealtiesData() {
     try {
@@ -86,13 +60,7 @@ function DataGridRealties() {
           {showDataGridSkeleton ? (
             <CustomSkeleton />
           ) : (
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={6}
-              rowsPerPageOptions={[6]}
-              disableSelectionOnClick
-            />
+            <DataGridRealties realties={realties} />
           )}
         </Grid>
       </Grid>
@@ -100,4 +68,4 @@ function DataGridRealties() {
   );
 }
 
-export default DataGridRealties;
+export default RealtiesFilter;
