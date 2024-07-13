@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import ErrorPage from "./ErrorPage.tsx";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Home from "./pages/Home/index.tsx";
+import Home from "./pages/Home/Home.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
 
@@ -22,12 +22,11 @@ const router = createBrowserRouter([
 ]);
 
 const rootElement = document.getElementById("root");
-if (rootElement) {
+if (!rootElement) console.error("No root element found");
+
+rootElement &&
   createRoot(rootElement).render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   );
-} else {
-  console.error("No root element found");
-}

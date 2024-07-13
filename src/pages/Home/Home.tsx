@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import RealtiesFilter from "./components/RealtiesFilter";
+import RealtiesFilter from "./components/RealtiesFilter/RealtiesFilter";
 
 function Home() {
   return (

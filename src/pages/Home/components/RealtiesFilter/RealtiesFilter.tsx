@@ -6,7 +6,7 @@ import RealtyService from "../../services/RealtyService";
 import { Grid, Typography } from "@mui/material";
 import RealtyForm from "../RealtyForm/RealtyForm";
 import CustomSkeleton from "../../../../shared/components/CustomSkeleton";
-import DataGridRealties from "../DataGridRealties";
+import DataGridRealties from "../DataGridRealties/DataGridRealties";
 
 function RealtiesFilter() {
   const { greyColor } = useCustomTheme();
